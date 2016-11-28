@@ -1,0 +1,58 @@
+
+---
+title: "Predicting Wage based on Age and Education"
+author: "Glenda Ascencio"
+date: "November 28, 2016"
+output: html_document
+---
+
+
+## I'll be analyzed the Wage dataset and created a linear model that predicted the wage of a worker based only on the worker’s age. 
+```{r}
+## Load libraries
+library(ggplot2)
+library(dplyr)
+library(ISLR)
+library(ggplot2)
+library(caret)
+
+
+## Loading the data
+data(Wage)
+
+## Statistical summary on the Wage dataset
+summary(Wage)
+
+## Building training and testing sets
+inTrain <- createDataPartition(y=Wage$wage, p=.7, list=FALSE)
+training <- Wage[inTrain,]
+testing <- Wage[-inTrain,]
+
+## Taking a look at the rows of each training and testing sets
+nrow(training)
+nrow(testing)
+
+#### Developing a linear model that predicts the average wage based on are and education ####
+
+## Building a linear model that predicts the wage of a worker based only on the worker's age
+lm_wage <- lm(wage ~ age, data = Wage)
+
+## Building a linear model that predicts the wage of a worker based on the worker's age and education
+
+lm_wage_education <- lm(wage ~ age + education, data = Wage)
+
+## Plotting a scatter plot matrix on the training dataset to see if there's a correlation between wage on age or education. The result shows a correlation between wage and education level.
+pairs(training$wage)
+featurePlot(x=training[,c("age", "education")],
+            y=training$wage,
+            plot="pairs")
+
+## Plot the training dataset using a qplot color coded by education
+
+wage_correlation <- qplot(age, wage, color=education, data=training)
+wage_correlation +  geom_smooth(method="lm", formula = y ~ x)
+
+## In conclusion, we can see that individuals with higher degree makes more money than those people with a lower degree
+
+```
+
