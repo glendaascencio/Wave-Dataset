@@ -1,11 +1,9 @@
-
 ---
 title: "Predicting Wage based on Age and Education"
 author: "Glenda Ascencio"
 date: "November 28, 2016"
 output: html_document
 ---
-
 
 ## I'll be analyzed the Wage dataset and created a linear model that predicted the wage of a worker based only on the worker’s age. 
 ```{r}
