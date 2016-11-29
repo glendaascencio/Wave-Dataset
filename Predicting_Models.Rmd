@@ -5,7 +5,7 @@ date: "November 28, 2016"
 output: html_document
 ---
 
-## I'll be analyzed the Wage dataset and created a linear model that predicted the wage of a worker based only on the worker’s age. 
+## I'll be analyzing the Wage dataset and I'll creating a linear model that predicted the wage of a worker based only on the worker’s age. 
 ```{r}
 ## Load libraries
 library(ggplot2)
